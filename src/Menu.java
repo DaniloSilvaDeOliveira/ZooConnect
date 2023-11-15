@@ -80,9 +80,8 @@ public class Menu {
        System.out.println("|     4 - Atualizar Envergadura Das Asa   |");
        System.out.println("|     0 - Sair                            |");
        System.out.println("+-----------------------------------------+\n");
-       ave.toString();
+       System.out.println(ave.ToString());
        System.out.println("Digite a opção desejada: ");
-
         while (true) {
             try {
                 opt = Integer.parseInt(sc.nextLine());
@@ -130,7 +129,7 @@ public class Menu {
         System.out.println("|     4 - Atualizar Pelagem               |");
         System.out.println("|     0 - Sair                            |");
         System.out.println("+-----------------------------------------+\n");
-        mamifero.toString();
+        System.out.println(mamifero.ToString());
         System.out.println("Digite a opção desejada: ");
         while (true) {
             try {
