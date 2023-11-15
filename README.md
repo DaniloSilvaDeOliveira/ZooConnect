@@ -1,7 +1,12 @@
 # ZooConnect
-## Descrição do Projeto
-O Sistema de Zoológico é uma aplicação desenvolvida para gerenciar animais em um ambiente zoológico. 
-O projeto é estruturado em quatro classes principais: Animal, Mamífero, Ave, e Zoológico.
+## 📝 Descrição do Projeto
+
+O projeto consiste em um Sistema de Gerenciamento de Zoológico desenvolvido em Java, como parte do curso de Programação Orientada a Objetos. 
+A aplicação permite cadastrar, visualizar, editar e excluir informações sobre animais, aplicando conceitos como herança. Além disso, 
+utiliza tecnologias como Java, IDE (IntelliJ) e Git.
+
+## 🎯 Objetivo:
+O objetivo é proporcionar aos estudantes uma experiência prática na aplicação dos conceitos de Programação Orientada a Objetos.
 
 ## 🦒 1. Classe Animal 
 
