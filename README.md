@@ -1,6 +1,9 @@
 # ZooConnect
+## Descrição do Projeto
+O Sistema de Zoológico é uma aplicação desenvolvida para gerenciar animais em um ambiente zoológico. 
+O projeto é estruturado em quatro classes principais: Animal, Mamífero, Ave, e Zoológico.
 
-## 1. Classe Animal 🦒
+## 🦒 1. Classe Animal 
 
 <details><summary>Atributos</summary>
   
@@ -19,7 +22,7 @@
   </details>
 <br>
 
-## 2. Classe Mamífero 🍼
+## 🍼 2. Classe Mamífero 
 
 <details><summary>Atributos</summary>
 
@@ -41,8 +44,7 @@ Herança:
   </details>
 <br>
 
-## 3. Classe Aves 🦆
-
+## 🦆 3. Classe Ave
 <details><summary>Atributos</summary>
 
 <br>
@@ -63,7 +65,7 @@ Herança:
   </details>
 <br>
 
-## 4. Classe Zoológico 🌳🐒
+## 🌳🐒 4. Classe Zoológico 
 
 <details><summary>Atributos</summary>
   
@@ -87,3 +89,9 @@ Herança:
 - `Funcionalidade 2`: Editar Animais
 - `Funcionalidade 2`: Listar Animais
 - `Funcionalidade 3`: Excluir Animais
+
+<br>
+
+<p align="center">
+<img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=%20FINALIZADO&color=GREEN&style=for-the-badge"/>
+</p>
