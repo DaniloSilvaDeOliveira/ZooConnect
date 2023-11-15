@@ -4,6 +4,7 @@ public class Ave extends Animal{
 
 
     public Ave(String nome, String espécie, String dieta, Double asas) {
+        
         setEnvergaduraDasAsas(asas);
         setNome(nome);
         setEspécie(espécie);

@@ -1,6 +1,7 @@
-public class Mamifero extends Animal{
-    private String corPelagem;
 
+public class Mamifero extends Animal{
+    
+    private String corPelagem;
 
     public Mamifero(String nome, String espécie, String dieta, String corPelagem) {
         setCorPelagem(corPelagem);
