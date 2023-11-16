@@ -92,8 +92,8 @@ Herança:
 
 - `Funcionalidade 1`: Cadastrar Animais
 - `Funcionalidade 2`: Editar Animais
-- `Funcionalidade 2`: Listar Animais
-- `Funcionalidade 3`: Excluir Animais
+- `Funcionalidade 3`: Listar Animais
+- `Funcionalidade 4`: Excluir Animais
 
 <br>
 
