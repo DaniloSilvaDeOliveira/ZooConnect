@@ -94,6 +94,8 @@ Herança:
 - `Funcionalidade 2`: Editar Animais
 - `Funcionalidade 3`: Listar Animais
 - `Funcionalidade 4`: Excluir Animais
+## 📑 Diagrama de Classes
+![image](https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/105463088/6997605f-bd5f-4152-a37b-84b3b656398a)
 
 <br>
 
