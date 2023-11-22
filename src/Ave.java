@@ -3,11 +3,11 @@ public class Ave extends Animal{
     private Double envergaduraDasAsas;
 
 
-    public Ave(String nome, String espécie, String dieta, Double asas) {
+    public Ave(String nome, String especie, String dieta, Double asas) {
         
         setEnvergaduraDasAsas(asas);
         setNome(nome);
-        setEspécie(espécie);
+        setEspecie(especie);
         setDieta(dieta);
     }
 
@@ -21,7 +21,7 @@ public class Ave extends Animal{
 
     public String ToString(){
         return "Nome: " + getNome() + "\n" +
-                "Espécie: " + getEspécie() + "\n" +
+                "Espécie: " + getEspecie() + "\n" +
                 "Dieta: " + getDieta() + "\n" +
                 "Envergadura Das Asas:  " + getEnvergaduraDasAsas() + " cm"  + "\n";
     }

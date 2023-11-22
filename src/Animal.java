@@ -9,12 +9,12 @@ public abstract class Animal {
         this.nome = nome;
     }
 
-    public String getEspécie() {
+    public String getEspecie() {
         return especie;
     }
 
-    public void setEspécie(String espécie) {
-        especie = espécie;
+    public void setEspecie(String especie) {
+        this.especie = especie;
     }
 
     public String getDieta() {
@@ -27,8 +27,8 @@ public abstract class Animal {
 
     public String ToString(){
         return "Nome: " + getNome() + "\n" +
-                "Espécie: " + getEspécie() + "\n" +
-                "Dieta: " + getDieta() + "\n";
+            "Espécie: " + getEspecie() + "\n" +
+            "Dieta: " + getDieta() + "\n";   
     }
 
 }

@@ -1,76 +1,119 @@
 import java.util.Scanner;
 
+
 public class Menu {
 
-    boolean execCadastrarAnimal(Zoológico zoo){
-        Scanner sc = new Scanner(System.in);
+    boolean execCadastrarAnimal(Zoologico zoo){
+        try{
+            Scanner sc = new Scanner(System.in);
 
-        System.out.println("Digite o nome do animal: ");
-        String nome = sc.nextLine();
-        System.out.println("Digite a especie do animal:  ");
-        String especie= sc.nextLine();
-        System.out.println("Digite a dieta do animal:  ");
-        String dieta = sc.nextLine();
-
-
-        System.out.println("Digite qual animal vai ser cadastrado: ");
-        System.out.println("1 - Ave");
-        System.out.println("2 - Mamifero");
-        int opt = -1;
-        while (true) {
-            try {
-                opt = Integer.parseInt(sc.nextLine());
-                break;  // Break the loop if the number is valid
-            } catch (NumberFormatException e) {
-                System.out.println("Por favor, insira um número válido.");
+            System.out.println("Digite o nome do animal: ");
+            String nome = sc.nextLine();
+            //verifica se o nome tem números ou se já está cadastrado no zoo
+            if(nome.matches(".*\\d.*")){
+                throw new Exception("Nome inválido.");
+            }else if(zoo.listarAnimal(nome) != null){
+                throw new Exception("Animal já cadastrado.");
             }
-        }
 
-        switch (opt) {
-            case 1:
-                System.out.println("Digite o valor da envergadura das asas:  ");
-                Double envergadura = Double.parseDouble(sc.nextLine());
+            System.out.println("Digite a especie do animal:  ");
+            String especie= sc.nextLine();
+            //verifica se a especie tem números
+            if(especie.matches(".*\\d.*")){
+                throw new Exception("Espécie inválida.");
+            }
 
-                Ave ave = new Ave(nome, especie, dieta, envergadura);
-                zoo.adicionarAnimal(ave);
-                return true;
-                case 2: 
-                    System.out.println("Digite a cor da pelagem:  ");
-                    String corPelagem = sc.nextLine();
-                    Mamifero mamifero = new Mamifero(nome, especie, dieta, corPelagem);
-                    zoo.adicionarAnimal(mamifero);
+            System.out.println("Digite a dieta do animal:  ");
+            String dieta = sc.nextLine();
+            //verifica se a dieta tem números
+            if(dieta.matches(".*\\d.*")){
+                throw new Exception("Dieta inválida.");
+            }
+
+            System.out.println("Digite qual animal vai ser cadastrado: ");
+            System.out.println("1 - Ave");
+            System.out.println("2 - Mamifero");
+            int opt;
+            while (true) {
+                try {
+                    opt = Integer.parseInt(sc.nextLine());
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Por favor, insira um número válido.");
+                }
+            }
+
+            switch (opt) {
+                case 1:
+                    System.out.println("Digite o valor da envergadura das asas:  ");
+                    double envergadura = Double.parseDouble(sc.nextLine());
+                    //verifica se a envergadura tem letras
+                    if(Double.isNaN(envergadura)){
+                        throw new Exception("Envergadura inválida.");
+                    }else if(envergadura < 0){
+                        throw new Exception("Envergadura deve ter um valor positivo.");
+                    }
+
+                    Ave ave = new Ave(nome, especie, dieta, envergadura);
+                    zoo.adicionarAnimal(ave);
                     return true;
-                default:
-                    System.out.println("Opção inválida.");
-                    return false;
+                    case 2: 
+                        System.out.println("Digite a cor da pelagem:  ");
+                        String corPelagem = sc.nextLine();
+                        //verifica se a cor da pelagem tem números
+                        if(corPelagem.matches(".*\\d.*")){
+                            throw new Exception("Cor da pelagem inválida.");
+                        }else if(corPelagem.isEmpty()){
+                            throw new Exception("Cor da pelagem não pode ser vazia");
+                        }
+                        Mamifero mamifero = new Mamifero(nome, especie, dieta, corPelagem);
+                        zoo.adicionarAnimal(mamifero);
+                        return true;
+                    default:
+                        System.out.println("Opção inválida.");
+                        return false;
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
         }
+        
     }
 
-    void atualizarAnimal(Zoológico zoo){
+    void atualizarAnimal(Zoologico zoo){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Digite o nome do animal que deseja atualizar: ");
-        String nome = sc.nextLine();
-        Animal animal = zoo.listarAnimal(nome);
-        if(animal instanceof Ave)
+        try{
+            System.out.println("Digite o nome do animal que deseja atualizar: ");
+            String nome = sc.nextLine();
+            //verifica se o nome tem números ou se já está cadastrado no zoo
+            if(nome.matches(".*\\d.*")){
+                throw new Exception("Nome inválido.");
+            }else if(zoo.listarAnimal(nome) != null){
+                throw new Exception("Animal já cadastrado.");
+            }
+            Animal animal = zoo.listarAnimal(nome);
+            if(animal instanceof Ave animalAve)
         {
-            Ave animalAve = (Ave) animal;
             String nomeOld = animalAve.getNome();
-            animalAve = menuAve(animalAve);
+            animalAve = menuAve(animalAve, zoo);
             zoo.substituirAnimal(nomeOld, animalAve);
         }
-        else if(animal instanceof Mamifero)
+        else if(animal instanceof Mamifero animalMamifero)
         {
-            Mamifero animalMamifero = (Mamifero) animal;
             String nomeOld = animalMamifero.getNome();
-            animalMamifero = menuMamifero(animalMamifero);
+            animalMamifero = menuMamifero(animalMamifero, zoo);
             zoo.substituirAnimal(nomeOld, animalMamifero);
+        }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
-    Ave menuAve(Ave ave){
+    Ave menuAve(Ave ave, Zoologico zoo) throws InterruptedException {
        Scanner sc = new Scanner(System.in);
-       int opt = 1;
+       int opt;
     do{
+        Thread.sleep(4000);
        System.out.println("+-----------------------------------------+");
        System.out.println("       Animal: "+ ave.getNome()+"          ");
        System.out.println("+-----------------------------------------+");
@@ -92,20 +135,68 @@ public class Menu {
         }
             switch(opt){
                 case 1:
+                try{
                     System.out.println("Digite o novo nome: ");
-                    ave.setNome(sc.nextLine());
+                    String nome = sc.nextLine();
+                    //verifica se o nome tem números ou se já está cadastrado no zoo
+                    if(nome.matches(".*\\d.*")){
+                        throw new Exception("Nome inválido.");
+                    }else if(zoo.listarAnimal(nome) != null){
+                        throw new Exception("Animal já cadastrado.");
+                    }
+                    ave.setNome(nome);
                     break;
+                    
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        return null;
+                    }
                 case 2:
-                    System.out.println("Digite a nova espécie: ");
-                    ave.setEspécie( sc.nextLine());
+                try{
+                        System.out.println("Digite a nova espécie: ");
+                        String especie = sc.nextLine();
+                        //verifica se a especie tem números
+                        if(especie.matches(".*\\d.*")){
+                            throw new Exception("Espécie inválida.");
+                        }
+                        ave.setEspecie(especie);
+                        break;
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        return null;
+                    }
                 case 3:
-                    System.out.println("Digite a nova dieta: ");
-                    ave.setDieta( sc.nextLine());
-                    break;
+                try{
+                        System.out.println("Digite a nova dieta: ");
+                        String dieta = sc.nextLine();
+                        //verifica se a dieta tem números
+                        if(dieta.matches(".*\\d.*")){
+                            throw new Exception("Dieta inválida.");
+                        }
+
+                        ave.setDieta(dieta);
+                        break;
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        return null;
+                    }
                 case 4:
+                try{
                     System.out.println("Digite a nova envergadura das asas: ");
-                    ave.setEnvergaduraDasAsas(Double.parseDouble(sc.nextLine()));
+                    double envergadura = Double.parseDouble(sc.nextLine());
+                    //verifica se a envergadura tem letras
+                    if(Double.isNaN(envergadura)){
+                        throw new Exception("Envergadura inválida.");
+                    }else if(envergadura < 0){
+                        throw new Exception("Envergadura deve ter um valor positivo.");
+                    }
+                    ave.setEnvergaduraDasAsas(envergadura);
                     break;
+                    }catch(Exception e){
+                        System.out.println(e.getMessage());
+                        return null;
+                    }
+                    
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -116,10 +207,11 @@ public class Menu {
         return ave;
     }
 
-    Mamifero menuMamifero(Mamifero mamifero){
+    Mamifero menuMamifero(Mamifero mamifero, Zoologico zoo) throws InterruptedException {
         Scanner sc = new Scanner(System.in);
         int opt = 1;
     do{
+        Thread.sleep(4000);
         System.out.println("+-----------------------------------------+");
         System.out.println("       Animal: "+ mamifero.getNome()+"       ");
         System.out.println("+-----------------------------------------+");
@@ -131,6 +223,7 @@ public class Menu {
         System.out.println("+-----------------------------------------+\n");
         System.out.println(mamifero.ToString());
         System.out.println("Digite a opção desejada: ");
+
         while (true) {
             try {
                 opt = Integer.parseInt(sc.nextLine());
@@ -141,21 +234,64 @@ public class Menu {
         }
             switch(opt){
                 case 1:
+                try{
                     System.out.println("Digite o novo nome: ");
-                    mamifero.setNome(sc.nextLine());
+                    String nome = sc.nextLine();
+                    //verifica se o nome tem números ou se já está cadastrado no zoo
+                    if(nome.matches(".*\\d.*")){
+                        throw new Exception("Nome inválido.");
+                    }else if(zoo.listarAnimal(nome) != null){
+                        throw new Exception("Animal já cadastrado.");
+                    }
+
+                    mamifero.setNome(nome);
                     break;
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
                 case 2:
+                try{
                     System.out.println("Digite a nova espécie: ");
-                    mamifero.setEspécie(sc.nextLine());
+                    String especie = sc.nextLine();
+                    //verifica se a especie tem números
+                    if(especie.matches(".*\\d.*")){
+                        throw new Exception("Espécie inválida.");
+                    }
+                    mamifero.setEspecie(especie);
                     break;
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
                 case 3:
+                try{
                     System.out.println("Digite a nova dieta: ");
-                    mamifero.setDieta(sc.nextLine());
+                    String dieta = sc.nextLine();
+                    //verifica se a dieta tem números
+                    if(dieta.matches(".*\\d.*")){
+                        throw new Exception("Dieta inválida.");
+                    }
+                    mamifero.setDieta(dieta);
                     break;
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
                 case 4:
+                try{
                     System.out.println("Digite a nova pelagem: ");
-                    mamifero.setCorPelagem(sc.nextLine());
+                    String pelagem = sc.nextLine();
+                    //verifica se a pelagem tem números
+                    if(pelagem.matches(".*\\d.*")){
+                        throw new Exception("Pelagem inválida.");
+                    }
+                    mamifero.setCorPelagem(pelagem);
                     break;
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
+                    return null;
+                }
                 case 0:
                     System.out.println("Saindo...");
                     break;

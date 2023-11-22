@@ -13,9 +13,10 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Menu menu = new Menu();
-        Zoológico zoo = new Zoológico();
+        Zoologico zoo = new Zoologico();
         int opcode = -1;
         do {
+            Thread.sleep(3000);
             System.out.println("+-----------------------------------+");
             System.out.println("|             Menu                  |");
             System.out.println("+-----------------------------------+");
@@ -42,8 +43,6 @@ public class Main {
                 case 1:
                     if(menu.execCadastrarAnimal(zoo)){
                         System.out.println("Animal cadastrado com sucesso!");
-                    }else{
-                        System.out.println("Ocorreu um erro ao cadastrar o animal.");
                     }
                     break;
                 case 2:
@@ -53,17 +52,30 @@ public class Main {
                     zoo.listarAnimais();
                     break;
                 case 4:
-                    System.out.println("Digite o nome do animal que deseja listar: ");
-                    Animal animalListado = zoo.listarAnimal(sc.nextLine());
-                    System.out.println(animalListado.ToString());
-                    
+                try{
+                        System.out.println("Digite o nome do animal que deseja listar: ");
+                        String nome = sc.nextLine();
+                        //verifica se o animal existe
+                        if(zoo.listarAnimal(nome) == null){
+                            throw new Exception("Animal não encontrado.");
+                        }else{
+                            Animal animalListado = zoo.listarAnimal(nome);
+                            System.out.println(animalListado.ToString());
+                        } 
+                        break;
+                }catch(Exception e){
+                    System.out.println(e.getMessage());
                     break;
+                }
                 case 5:
                     System.out.println("Digite o nome do animal que deseja excluir: ");
                     Animal animalExcluido = zoo.listarAnimal(sc.nextLine());
                     zoo.removerAnimal(animalExcluido);
 
                     break;
+                default:
+                    System.out.println("digite um número válido");
+
             }
         } while (opcode != 0);
     }
