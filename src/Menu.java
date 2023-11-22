@@ -80,31 +80,35 @@ public class Menu {
         
     }
 
-    void atualizarAnimal(Zoologico zoo){
+    void atualizarAnimal(Zoologico zoo) {
         Scanner sc = new Scanner(System.in);
-        try{
+        try {
             System.out.println("Digite o nome do animal que deseja atualizar: ");
             String nome = sc.nextLine();
-            //verifica se o nome tem números ou se já está cadastrado no zoo
-            if(nome.matches(".*\\d.*")){
+
+            // Verifica se o nome é inválido (contém números ou caracteres especiais)
+            if (!nome.matches("[a-zA-Z]+")) {
                 throw new Exception("Nome inválido.");
-            }else if(zoo.listarAnimal(nome) != null){
-                throw new Exception("Animal já cadastrado.");
             }
+
+            // Verifica se o animal já está cadastrado
             Animal animal = zoo.listarAnimal(nome);
-            if(animal instanceof Ave animalAve)
-        {
-            String nomeOld = animalAve.getNome();
-            animalAve = menuAve(animalAve, zoo);
-            zoo.substituirAnimal(nomeOld, animalAve);
-        }
-        else if(animal instanceof Mamifero animalMamifero)
-        {
-            String nomeOld = animalMamifero.getNome();
-            animalMamifero = menuMamifero(animalMamifero, zoo);
-            zoo.substituirAnimal(nomeOld, animalMamifero);
-        }
-        }catch(Exception e){
+            if (animal == null) {
+                throw new Exception("Animal não encontrado.");
+            }
+
+            if (animal instanceof Ave) {
+                Ave animalAve = (Ave) animal;
+                String nomeOld = animalAve.getNome();
+                animalAve = menuAve(animalAve, zoo);
+                zoo.substituirAnimal(nomeOld, animalAve);
+            } else if (animal instanceof Mamifero) {
+                Mamifero animalMamifero = (Mamifero) animal;
+                String nomeOld = animalMamifero.getNome();
+                animalMamifero = menuMamifero(animalMamifero, zoo);
+                zoo.substituirAnimal(nomeOld, animalMamifero);
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -213,7 +217,7 @@ public class Menu {
     do{
         Thread.sleep(4000);
         System.out.println("+-----------------------------------------+");
-        System.out.println("       Animal: "+ mamifero.getNome()+"       ");
+        Estilo.cor("       Animal: "+ mamifero.getNome()+"       ",3);
         System.out.println("+-----------------------------------------+");
         System.out.println("|     1 - Atualizar Nome                  |");
         System.out.println("|     2 - Atualizar Espécie               |");

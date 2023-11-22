@@ -55,7 +55,7 @@ public class Zoologico {
         }
         else
         {
-            System.out.println("Opção inválida.");
+            Estilo.cor("Opção inválida.",1);
         }
     }
 
@@ -70,7 +70,7 @@ public class Zoologico {
 
     public Animal listarAnimal(String nome){
         if(nome.matches(".*\\d.*")){
-            System.out.println("Nome inválido.");
+            Estilo.cor("Nome inválido.",1);
             return null;
         }
         for (Animal animal : listaDeAnimais) {
@@ -83,12 +83,15 @@ public class Zoologico {
 
     public void removerAnimal(Animal animal){
         listaDeAnimais.remove(animal);
+        System.out.println("\n+--------------------------------------------+");
+        Estilo.cor("      "+animal.getNome()+" foi excluido(a) com sucesso!! ",3);
+        System.out.println("\n+--------------------------------------------+");
     }
 
     public void listarAnimais(){
 
         if (listaDeAnimais.isEmpty()) {
-            System.out.println("Não há animais no zoológico");
+            Estilo.cor("Não há animais no zoológico",1);
             return;
         }else{
             for (Animal animal : listaDeAnimais) {
@@ -97,5 +100,6 @@ public class Zoologico {
             }
         }
     }
+
 
 }

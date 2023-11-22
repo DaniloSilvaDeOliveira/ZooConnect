@@ -19,7 +19,7 @@ public class Zoológico {
             Double envergadura = Double.parseDouble(sc.nextLine());
             animalAve.setEnvergaduraDasAsas(envergadura);
             animalAve.setDieta(novaDieta);
-            animalAve.setEspécie(novaEspecie);
+            animalAve.setEspecie(novaEspecie);
 
         }
         else if(animal instanceof Mamifero)
@@ -29,7 +29,7 @@ public class Zoológico {
             String corPelagem = sc.nextLine();
             animalMamifero.setCorPelagem(corPelagem);
             animalMamifero.setDieta(novaDieta);
-            animalMamifero.setEspécie(novaEspecie);
+            animalMamifero.setEspecie(novaEspecie);
 
         }
         else

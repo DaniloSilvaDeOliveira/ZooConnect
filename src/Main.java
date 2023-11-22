@@ -3,27 +3,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println(" ______            _____                             _   ");
-        System.out.println("|___  /           /  __ \\                           | |  ");
-        System.out.println("   / /  ___   ___ | /  \\/ ___  _ __  _ __   ___  __| | ");
-        System.out.println("  / /  / _ \\ / _ \\| |    / _ \\| '_ \\| '_ \\ / _ \\/ __| __|");
-        System.out.println("./ /_| (_) | (_) | \\__/\\ (_) | | | | | | |  __/ (__| | ");
-        System.out.println("\\_____/\\___/ \\___/ \\____/\\___/|_| |_|_| |_|\\___|\\___|\\__|");
-        Thread.sleep(2000);
-
+        Estilo.logo();
         Scanner sc = new Scanner(System.in);
         Menu menu = new Menu();
         Zoologico zoo = new Zoologico();
         int opcode = -1;
         do {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             System.out.println("+-----------------------------------+");
             System.out.println("|             Menu                  |");
             System.out.println("+-----------------------------------+");
             System.out.println("|     1 - Cadastrar Animal          |");
             System.out.println("|     2 - Atualizar Animal          |");
             System.out.println("|     3 - Listar Animais            |");
-            System.out.println("|     4 - Listar Animal             |");
+            System.out.println("|     4 - Buscar Animal             |");
             System.out.println("|     5 - Excluir Animal            |");
             System.out.println("|     0 - Sair                      |");
             System.out.println("+-----------------------------------+\n");
@@ -33,23 +26,55 @@ public class Main {
                     opcode = Integer.parseInt(sc.nextLine());
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("Por favor, insira um número válido.");
+                    Estilo.cor("+-----------------------------------------+",1);
+                    Estilo.cor("|  Por favor, insira um número válido. ⚠️ |",1);
+                    Estilo.cor("+-----------------------------------------+",1);
                 }
             }
             switch (opcode) {
                 case 0:
-                    System.out.println("Saindo...");
+
+                Estilo.limparTela();
+
+                Thread.sleep(1000);
+                System.out.println("\t\tProjeto POO - 4° Análise Desenvolvimento de Sistemas");
+
+                Estilo.cor("\t +-------------------------------------------------+",2);
+                Estilo.cor("\t |                       INTEGRANTES               |",2);
+                Estilo.cor("\t +-------------------------------------------------+",2);
+                    Thread.sleep(500);
+                Estilo.cor("\t |                       Danilo Silva              |",2);
+                    Thread.sleep(500);
+                Estilo.cor("\t |                       Fábio Passos              |",2);
+                    Thread.sleep(500);
+                Estilo.cor("\t |                       Juliana Lopes             |",2);
+                    Thread.sleep(500);
+                Estilo.cor("\t |                       Larissa Gabrielle         |",2);
+                    Thread.sleep(500);
+                Estilo.cor("\t |                       Luma Souza                |",2);
+                Estilo.cor("\t +-------------------------------------------------+",2);
+                    Thread.sleep(500);
+
+                System.out.println("\t\t\t\t\t  Saindo...");
                     break;
                 case 1:
                     if(menu.execCadastrarAnimal(zoo)){
-                        System.out.println("Animal cadastrado com sucesso!");
+                        Estilo.cor("\n+-----------------------------------------+",2);
+                        Estilo.cor("|      Animal cadastrado com sucesso! ✅  |", 2);
+                        Estilo.cor("+-----------------------------------------+",2);
                     }
                     break;
                 case 2:
                     menu.atualizarAnimal(zoo);
                     break;
                 case 3:
+                    Estilo.cor("\n+-----------------------------------------+",3);
+                    Estilo.cor("|      Lista de Animais cadastrados 📃    |", 3);
+                    Estilo.cor("+-----------------------------------------+\n",3);
                     zoo.listarAnimais();
+
+
+
                     break;
                 case 4:
                 try{
@@ -74,9 +99,12 @@ public class Main {
 
                     break;
                 default:
-                    System.out.println("digite um número válido");
+                    Estilo.cor("\n+-----------------------------------------+",1);
+                    Estilo.cor("|         Digite um número válido ⚠️      |",1);
+                    Estilo.cor("+-----------------------------------------+",1);
 
             }
         } while (opcode != 0);
     }
+
 }
