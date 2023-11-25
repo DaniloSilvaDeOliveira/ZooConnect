@@ -1,18 +1,12 @@
 # ZooConnect
 
 
-## Conheça o projeto
+## 🌴Conheça o projeto 👨🏽‍💻👩🏽‍💻
 
 - https://youtu.be/DH67tinaPic
 
-
-
-<div align="center">
-  <img src="../../../Downloads/qrcode_www.youtube.com.png" width="200" height="200">
-</div>
-
-
-![qrcode_www.youtube.com.png](..%2F..%2F..%2F..%2FDownloads%2Fqrcode_www.youtube.com.png)
+  
+  ![qrcode_www youtube com](https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/61357219/9bb0d7fd-e4e4-437f-abed-dcedd528c30a)
 
 
 
