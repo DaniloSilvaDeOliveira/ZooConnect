@@ -1,4 +1,21 @@
 # ZooConnect
+
+
+## Conheça o projeto
+
+- https://youtu.be/DH67tinaPic
+
+
+
+<div align="center">
+  <img src="../../../Downloads/qrcode_www.youtube.com.png" width="200" height="200">
+</div>
+
+
+![qrcode_www.youtube.com.png](..%2F..%2F..%2F..%2FDownloads%2Fqrcode_www.youtube.com.png)
+
+
+
 ## 📝 Descrição do Projeto
 
 O projeto consiste em um Sistema de Gerenciamento de Zoológico desenvolvido em Java, como parte do curso de Programação Orientada a Objetos. 
