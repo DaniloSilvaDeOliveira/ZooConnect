@@ -109,7 +109,18 @@ Herança:
 ![image](https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/105463088/6997605f-bd5f-4152-a37b-84b3b656398a)
 
 <br>
+<br>
+<br>
 
+# 👩🏽‍💻👨🏽‍💻Integrantes
+
+<br>
+<br>
+
+| [<img src="https://avatars.githubusercontent.com/u/75835535?v=4" width=115><br><sub>Danilo Silva</sub>](https://github.com/DaniloSilvaDeOliveira) | [<img src="https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/61357219/c7487509-86ce-45d7-ab04-ac80fab2cce4" width=115 ><br><sub>Fábio Passos</sub>](https://github.com/FabioPassos10) | [<img src="https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/61357219/84e1af31-3b35-4723-9b83-8aa996be304f" width=115><br><sub>Juliana Lopes</sub>](#)  | [<img src="https://avatars.githubusercontent.com/u/105463088?v=4" width=115><br><sub>Larissa Gabrielle</sub>](https://github.com/LarissaGabrielle) | [<img src="https://github.com/DaniloSilvaDeOliveira/ZooConnect/assets/61357219/c7f6b868-ed62-4d8e-818c-3e0dd1b072f0" width=115><br><sub>Luma Sousa</sub>](https://github.com/Lumas1920)|
+| :---: | :---: | :---: | :---: | :---: |
+<br>
+<br>
 <p align="center">
 <img loading="lazy" src="http://img.shields.io/static/v1?label=STATUS&message=%20FINALIZADO&color=GREEN&style=for-the-badge"/>
 </p>
